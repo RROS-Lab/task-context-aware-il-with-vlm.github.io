@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task-Context-Aware Imitation Learning with 
+        Vision-language Guided Inference for Robotic Multi-Task Disassembly</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120436611-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-120436611-3');
+    </script>
+    <script type="text/javascript">google.load("jquery", "1.3.2");</script>
+    <script src="video.js"></script>
+
+    <link rel="StyleSheet" href="style.css" type="text/css"/>
+    <style>
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+      }
+
+      .usc-logo {
+        height: 120px;
+        width: auto;
+      }
+
+      .header .title {
+        font-size: 24px;
+        margin: 0;
+        color: #333;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="header">
+      <img src="images/usc-logo.png" alt="USC Logo" class="usc-logo">
+    </div>
+
+    <center>
+      <h1 class="title">Task-Context-Aware Imitation Learning with 
+        Vision-language Guided Inference for Robotic Multi-Task Disassembly</h1>
+    </center>
+
+    <br>
+    <table align=center width=1000px>
+      <tr>
+        <td align=center width=150px>
+          <center>
+            <span class="author">Jeon Ho Kang</a></span>
+          </center>
+        </td>
+        <td align=center width=150px>
+          <center>
+            <span class="author">Igal Tamarkin</a></span>
+          </center>
+        </td>
+        <td align=center width=150px>
+          <center>
+            <span class="author">Ian Novales</a></span>
+          </center>
+        </td>
+        <td align=center width=190px>
+          <center>
+            <span class="author">Satyandra K. Gupta</a></span>
+          </center>
+        </td>
+      </tr>
+    </table>
+
+    <table align=center width=700px>
+      <tr>
+        <td align=center width=100px>
+          <center>
+            <span class="author">University of Southern California</span>
+          </center>
+        </td>
+      </tr>
+    </table>
+
+    <div class="container">
+      <table align=center width=60%>
+        <tr>
+          <td align=center width=33%>
+            <center>
+              <img class="layered-paper" width=15% src="images/pg4.png"/>
+              <!-- <p class="sectitle"><a href="https://arxiv.org/pdf/2503.03998">Paper</a></p> -->
+              <p class="sectitle"><a href="">Paper (TBD)</a></p>
+            </center>
+          </td>
+          <td align=center width=33%>
+            <center>
+              <img width=20% src="images/github.png"/>
+              <!-- <p class="sectitle"><a href="https://github.com/JeonHoKang/Diffusion_Policy_ICRA">Code</a></p> -->
+              <p class="sectitle"><a href="">Code (Coming Soon)</a></p>
+            </center>
+          </td>
+          <td align=center width=33%>
+            <center>
+              <img width=25% src="images/youtube-logo.png"/>
+              <!-- <p class="sectitle"><a href="https://www.youtube.com/watch?v=SyKixlaEUZY&ab_channel=CAMUSCViterbi">Video</a></p> -->
+              <p class="sectitle"><a href="">Video (Coming Soon)</a></p>
+            </center>
+          </td>
+        </tr>
+      </table>      
+    </div>
+
+    <!-- <div class="container demo-videos">
+      <center><h2 class="sectitle">Our Method</h2></center>
+      <div class="video-row">
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/4aaa_pry_success.mp4" type="video/mp4">
+          </video>
+          <p class="caption">AAA Battery</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/2aa_pry_success.mp4" type="video/mp4">
+          </video>
+          <p class="caption">AA Battery</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/2c_pry_success.mp4" type="video/mp4">
+          </video>
+          <p class="caption">C Battery</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/2d_pry_success.mp4" type="video/mp4">
+          </video>
+          <p class="caption">D Battery</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="container" id="failure-cases">
+      <center><h2 class="sectitle">Representative Failure Cases (Benchmark Methods)</h2></center>
+      <div class="failure-grid">
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/fail1-converted.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Loss of contact</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/fail2-converted.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Premature prying</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/fail3.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Failure during insertion</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/fail4-converted.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Insufficient force applied</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div> -->
+    
+    <!-- <div class="container" id="edge-cases">
+      <center><h2 class="sectitle">Edge Cases</h2></center>
+      <div class="failure-grid"> -->
+        <!-- First Row: 2 Videos -->
+        <!-- <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/RAL_Edge_cases/Amazon2_AA.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Silver AA Battery</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/RAL_Edge_cases/black_AA.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Black AA Battery</p>
+        </div> -->
+    
+        <!-- Second Row: 2 Videos -->
+        <!-- <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/RAL_Edge_cases/duracel.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Copper and Black AA Battery</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/RAL_Edge_cases/orang_AAA.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Orange AAA Battery</p>
+        </div> -->
+    
+        <!-- Third Row: 2 Videos -->
+        <!-- <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/RAL_Edge_cases/silver_c.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Metallic C Battery</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/Silver_D.mp4" type="video/mp4">
+          </video>
+          <p class="caption">Silver D Battery</p>
+        </div> -->
+    
+        <!-- Fourth Row: Centered Video -->
+        <!-- <div class="video-case video-center">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/RAL_Edge_cases/C_series.mp4" type="video/mp4">
+          </video>
+          <p class="caption">C Batteries in Series</p>
+        </div>
+      </div>
+    </div> -->
+    
+    
+    <div class="divider"></div>
+    <div class="container" id="abstract">
+      <center><h2 class="sectitle">Abstract</h2></center>
+      <p class="text">
+        Recent advances in imitation learning have enabled
+        robots to execute an increasingly diverse set of manipulation
+        skills. However, real-world manufacturing assembly and disassembly
+        require long-horizon, multi-task operation, where robots
+        must identify and switch between context-appropriate skills. A
+        single scene may contain multiple task objectives—such as BNC,
+        terminal block, USB, and other connectors—requiring the robot
+        to reason over several possible goals within the same observation
+        space. Moreover, each connector type demands distinct motion
+        strategies (e.g., wiggling, prying, rotating to unlock), making it
+        difficult for policies trained solely on visual and force observations
+        to reliably generalize. Humans naturally overcome this complexity
+        by segmenting long-horizon demonstrations into meaningful
+        sub-task modes and using high-level reasoning, often expressed in
+        language, to guide sequencing and execution. Motivated by this
+        insight, we tackle two key challenges: (1) improving policy efficiency
+        and robustness by structuring manipulation into language-guided
+        sub-task modes, and (2) enabling a high-level Vision-Language
+        Model (VLM) to select the appropriate sub-task based
+        on natural-language prompts and scene context. Furthermore,
+        we introduce an adaptive modality-weighting framework that
+        dynamically adjusts the contribution of visual and force cues
+        depending on the current sub-task mode.
+      </p>
+    </div>
+    <div class="divider"></div>
+
+    <div class="container" id="network">
+      <center><h2 class="sectitle">Temporal Freezing Effect</h2></center>
+      <div class="container">
+        <img src="images/temporal_bottleneck.png"></img>
+      </div>
+    </div>
+    <div class="divider"></div>
+      <div class="container" id="network">
+        <center><h2 class="sectitle">System Architecture</h2></center>
+        <!-- <div class="container">
+          <img src="images/tca_system_architecture.png"></img>
+        </div>
+        <div class="container">
+          <div class="reduced-image">
+            <img src="images/online_vlm_arch.png"></img>
+          </div>
+        </div> -->
+        
+        <div class="bottom-images">
+          <div class="large-part-image">
+            <img src="images/tca_system_architecture.png"></img>
+            <center><p class="caption">System Architecture</p></center>
+          </div>
+          <div class="vert-divider"></div>
+          <div class="small-part-image">
+            <img src="images/online_vlm_arch.png"></img>
+            <center><p class="caption">VLM Prompting</p></center>
+          </div>
+        </div>
+
+      </div>
+
+    <div class="divider"></div>
+
+    <center><h2 class="sectitle">Experimental Setup</h2></center>
+    <!-- <div class="img-row" id="connector-images">
+      <div class="container image-container">
+        <img src="images/hardware_setup.png" alt="?" class="centered-image">
+        <p class="caption">Hardware Setup</p>
+      </div>
+      <div class="container image-container">
+        <img src="images/trajectory_command.png" alt="?" class="centered-image">
+        <p class="caption">Connector Task Map</p>
+      </div>
+    </div>
+    <div class="divider"></div> -->
+
+    <div class="bottom-images">
+      <div class="med-part-image">
+        <img src="images/hardware_setup.png"></img>
+        <center><p class="caption">Hardware Setup</p></center>
+      </div>
+      <div class="large-part-image">
+        <img src="images/trajectory_command.png"></img>
+        <center><p class="caption">Connector Tasks</p></center>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- <div class="container" id="result">
+      <center><h2 class="sectitle">Results</h2></center>
+      <div class="table-container">
+          <style>
+              .results-table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin: 20px 0;
+                  font-size: 14px;
+              }
+  
+              .results-table th, .results-table td {
+                  border: 1px solid #ddd;
+                  padding: 8px;
+                  text-align: center;
+              }
+  
+              .results-table th {
+                  background-color: #f5f5f5;
+                  font-weight: bold;
+              }
+  
+              .results-table .highlight {
+                  font-weight: bold;
+              }
+          </style>
+  
+          <table class="results-table">
+              <tr>
+                  <th rowspan="2"></th>
+                  <th colspan="4">AAA</th>
+                  <th colspan="4">AA</th>
+                  <th colspan="4">C</th>
+                  <th colspan="4">D</th>
+                  <th rowspan="2">Avg. Success Rate</th>
+              </tr>
+              <tr>
+                  <th>Obj1</th>
+                  <th>Obj2*</th>
+                  <th>Obj3*</th>
+                  <th>Avg.</th>
+                  <th>Obj4</th>
+                  <th>Obj5</th>
+                  <th>Obj6</th>
+                  <th>Avg.</th>
+                  <th>Obj7</th>
+                  <th>Obj8</th>
+                  <th>Obj9</th>
+                  <th>Avg.</th>
+                  <th>Obj10</th>
+                  <th>Obj11*</th>
+                  <th>Obj12*</th>
+                  <th>Avg.</th>
+              </tr>
+              <tr>
+                  <td>DP-B</td>
+                  <td>0.0</td>
+                  <td>0.5</td>
+                  <td>0.7</td>
+                  <td>0.4</td>
+                  <td>0.2</td>
+                  <td>0.3</td>
+                  <td>0.1</td>
+                  <td>0.2</td>
+                  <td>0.4</td>
+                  <td>0.4</td>
+                  <td>0.3</td>
+                  <td>0.37</td>
+                  <td>0.4</td>
+                  <td>0.8</td>
+                  <td>0.6</td>
+                  <td>0.6</td>
+                  <td>0.39</td>
+              </tr>
+              <tr>
+                  <td>DP-LF</td>
+                  <td>0.2</td>
+                  <td>0.4</td>
+                  <td>0.7</td>
+                  <td>0.43</td>
+                  <td>0.5</td>
+                  <td>0.4</td>
+                  <td>0.3</td>
+                  <td>0.4</td>
+                  <td>0.1</td>
+                  <td>0.4</td>
+                  <td>0.8</td>
+                  <td>0.43</td>
+                  <td>0.6</td>
+                  <td>0.5</td>
+                  <td>0.9</td>
+                  <td>0.67</td>
+                  <td>0.48</td>
+              </tr>
+              <tr>
+                  <td>DP-PF</td>
+                  <td>0.4</td>
+                  <td>0.7</td>
+                  <td>0.8</td>
+                  <td>0.63</td>
+                  <td>0.5</td>
+                  <td>0.7</td>
+                  <td>0.5</td>
+                  <td>0.57</td>
+                  <td>0.2</td>
+                  <td>0.3</td>
+                  <td>0.7</td>
+                  <td>0.4</td>
+                  <td>0.4</td>
+                  <td>0.7</td>
+                  <td>0.9</td>
+                  <td>0.67</td>
+                  <td>0.57</td>
+              </tr>
+              <tr class="highlight">
+                  <td>DP-CA (Ours)</td>
+                  <td>0.9</td>
+                  <td>0.9</td>
+                  <td>0.9</td>
+                  <td>0.9</td>
+                  <td>1.0</td>
+                  <td>0.9</td>
+                  <td>1.0</td>
+                  <td>0.97</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>0.96</td>
+              </tr>
+          </table>
+      </div>
+      
+      <div class="image-single">
+        <div class="image-case">
+          <img src="images/bar_chart_time.png" alt="Time Taken Comparison">
+          <p class="caption">A comparison of the average time taken for the human
+            demonstration versus robot inference.</p>
+        </div>
+      </div>
+
+      <div class="bottom-images">
+        <div class="image-case">
+          <img src="images/force_seen.png" alt="Peak Force Comparison (In Distribution)">
+          <p class="caption">Comparison between peak component force exerted on
+            batteries between the human demonstration and robot inference (In Distribution)</p>
+        </div>
+        <div class="image-case">
+          <img src="images/force_unseen.png" alt="Peak Force Comparison (Out of Distribution)">
+          <p class="caption">Comparison between peak component force exerted on
+            batteries between the human demonstration and robot inference (Out of Distribution)</p>
+        </div>
+      </div>
+
+      <div class="image-single">
+        <div class="image-case">
+          <img src="images/force_line.png" alt="Force Trend" class="small-image">
+          <p class="caption">Force Trend During Single Battery Prying Task:</p>
+        </div>
+      </div>
+      <div class="image-single">
+        <div class="image-case">
+          <img src="images/failure_force.png" alt="Failure Mode" class="large-image">
+          <p class="caption">Example Force Trend During Failure [Vision-only]</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div> -->
+<div class="container" id="bibtex">
+  <center><h2 class="sectitle">BibTeX</h2></center>
+  <pre style="background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 14px;">
+<!-- @article{kang2025robotic,
+  author    = {Jeon Ho Kang and Sagar Joshi and Ruopeng Huang and Satyandra K. Gupta},
+  title     = {Robotic Compliant Object Prying Using Diffusion Policy Guided by Vision and Force Observations},
+  journal   = {IEEE Robotics and Automation Letters},
+  year      = {2025},
+  note      = {Accepted for publication. Available on arXiv: arXiv:2503.03998},
+} -->
+  TBD
+  </pre>
+</div>
+
+    
+  </body>
+</html>

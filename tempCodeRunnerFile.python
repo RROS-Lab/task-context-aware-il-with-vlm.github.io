@@ -1,0 +1,87 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+
+# New categories representing mode changes
+categories = ['Approach to Grasp', 'Grasp to Prepare', 'Prepare to Pull']
+agents = ['DP-S', 'DP-M-AM']
+
+# Mean times for each agent and mode change category
+mean_times = {
+    'DP-S': [8.5, 7.8, 6.9],
+    'DP-M-AM': [9.2, 8.3, 7.1]
+}
+
+# Standard errors for each agent and mode change category
+std_errors = {
+    'DP-S': [1.2, 1.1, 1.0],
+    'DP-M-AM': [1.5, 1.3, 1.2]
+}
+
+# Set Seaborn style and context for aesthetics
+sns.set(style='white', context='talk')
+
+# Create the figure and axes
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Set up the bar positions
+x = np.arange(len(categories))  # Label locations
+width = 0.25  # Width of the bars
+
+# Plot the bars for 'DP-S' and 'DP-M-AM' using specified colors
+rects1 = ax.bar(
+    x - width / 2,  # Positions for DP-S bars
+    mean_times['DP-S'],
+    width,
+    yerr=std_errors['DP-S'],
+    capsize=5,
+    label='DP-S',
+    color='#a6cee3',  # First color
+    edgecolor='black'
+)
+
+rects2 = ax.bar(
+    x + width / 2,  # Positions for DP-M-AM bars
+    mean_times['DP-M-AM'],
+    width,
+    yerr=std_errors['DP-M-AM'],
+    capsize=5,
+    label='DP-M-AM',
+    color='#b2df8a',  # Second color
+    edgecolor='black'
+)
+
+# Customize labels and title
+ax.set_xlabel('Mode Change Stages', fontsize=21)
+ax.set_ylabel('Time Taken (s)', fontsize=21)
+ax.set_title('Comparison of Time Taken for Mode Changes', fontsize=24)
+ax.set_xticks(x)
+ax.set_xticklabels(categories, fontsize=18)  # Increased fontsize for category labels
+ax.legend(title='', fontsize=16)
+
+# Set y-axis limits and ticks
+max_y = max(
+    max(mean_times['DP-S']),
+    max(mean_times['DP-M-AM'])
+) + max(
+    max(std_errors['DP-S']),
+    max(std_errors['DP-M-AM'])
+) + 2
+ax.set_ylim(0, max_y)
+
+# Add ticks on the y-axis with smaller intervals
+ax.set_yticks(np.arange(0, max_y + 1, 2))  # Ticks every 2 units
+
+# Optionally, add minor ticks for even finer granularity
+ax.yaxis.set_minor_locator(plt.MultipleLocator(0.5))  # Minor ticks every 0.5 unit
+ax.grid(visible=True, which='major', axis='y', linestyle='--', alpha=0.7)  # Add grid lines for major ticks
+ax.grid(visible=True, which='minor', axis='y', linestyle=':', alpha=0.4)  # Add grid lines for minor ticks
+
+# Remove spines for a cleaner look
+sns.despine(ax=ax)
+
+# Adjust layout for tightness
+plt.tight_layout()
+
+# Display the plot
+plt.show()
