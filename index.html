@@ -106,121 +106,150 @@
               <p class="sectitle"><a href="">Code (Coming Soon)</a></p>
             </center>
           </td>
-          <td align=center width=33%>
+          <!-- <td align=center width=33%>
             <center>
               <img width=25% src="images/youtube-logo.png"/>
-              <!-- <p class="sectitle"><a href="https://www.youtube.com/watch?v=SyKixlaEUZY&ab_channel=CAMUSCViterbi">Video</a></p> -->
               <p class="sectitle"><a href="">Video (Coming Soon)</a></p>
             </center>
-          </td>
+          </td> -->
         </tr>
       </table>      
     </div>
 
-    <!-- <div class="container demo-videos">
+    <div class="container demo-videos">
       <center><h2 class="sectitle">Our Method</h2></center>
       <div class="video-row">
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/4aaa_pry_success.mp4" type="video/mp4">
+            <source src="videos/demo/demos/dsub.mov" type="video/mp4">
           </video>
-          <p class="caption">AAA Battery</p>
+          <p class="caption">D-Sub Removal</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/2aa_pry_success.mp4" type="video/mp4">
+            <source src="videos/demo/demos/usb.mov" type="video/mp4">
           </video>
-          <p class="caption">AA Battery</p>
+          <p class="caption">USB Removal</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/2c_pry_success.mp4" type="video/mp4">
+            <source src="videos/demo/demos/bnc_labeled.mov" type="video/mp4">
           </video>
-          <p class="caption">C Battery</p>
+          <p class="caption">BNC Removal</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/2d_pry_success.mp4" type="video/mp4">
+            <source src="videos/demo/demos/terminal_block.mov" type="video/mp4">
           </video>
-          <p class="caption">D Battery</p>
+          <p class="caption">Terminal Block Removal</p>
         </div>
+        <div class="video-case video-center">
+        <video controls playsinline autoplay muted loop>
+          <source src="videos/demo/demos/end_to_end_demo.mov" type="video/mp4">
+        </video>
+        <p class="caption">End-to-End Removal</p>
+      </div>
       </div>
     </div>
     <div class="divider"></div>
     <div class="container" id="failure-cases">
-      <center><h2 class="sectitle">Representative Failure Cases (Benchmark Methods)</h2></center>
+      <!-- <center><h2 class="sectitle">Representative Failure Cases (Benchmark Methods)</h2></center> -->
+      <center><h2 class="sectitle">Temporal Freezing Effect</h2></center>
+      <!-- <div class="container">
+        <img src="images/temporal_bottleneck.png"></img>
+      </div> -->
       <div class="failure-grid">
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/fail1-converted.mp4" type="video/mp4">
+            <source src="videos/freezing_effect/dsub_freezing_grrasp.mov" type="video/mp4">
           </video>
-          <p class="caption">Loss of contact</p>
+          <p class="caption">D-Sub Freezing during Grasp</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/fail2-converted.mp4" type="video/mp4">
+            <source src="videos/freezing_effect/bnc_freezing_grasp.mov" type="video/mp4">
           </video>
-          <p class="caption">Premature prying</p>
+          <p class="caption">BNC Freezing during Grasp</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/fail3.mp4" type="video/mp4">
+            <source src="videos/freezing_effect/terminal_grasp_freezing.mov" type="video/mp4">
           </video>
-          <p class="caption">Failure during insertion</p>
+          <p class="caption">Terminal Block Freezing during Grasp</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/fail4-converted.mp4" type="video/mp4">
+            <source src="videos/freezing_effect/terminal_freezing_pull.mov" type="video/mp4">
           </video>
-          <p class="caption">Insufficient force applied</p>
+          <p class="caption">Terminal Block Freezing during Pull</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/freezing_effect/usb_freezing_grasp.mov" type="video/mp4">
+          </video>
+          <p class="caption">USB Freezing during Grasp</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/freezing_effect/usb_freezing_pull.mov" type="video/mp4">
+          </video>
+          <p class="caption">USB Freezing during Pull</p>
         </div>
       </div>
+
+      <div class="video-case video-center">
+        <video controls playsinline autoplay muted loop>
+          <source src="videos/freezing_effect/usb_etoe_freezing.mov" type="video/mp4">
+        </video>
+        <p class="caption">USB Freezing End-to-End</p>
+      </div>
+
     </div>
-    <div class="divider"></div> -->
+    <div class="divider"></div>
     
-    <!-- <div class="container" id="edge-cases">
+    <div class="container" id="edge-cases">
       <center><h2 class="sectitle">Edge Cases</h2></center>
-      <div class="failure-grid"> -->
+      <div class="failure-grid">
         <!-- First Row: 2 Videos -->
-        <!-- <div class="video-case">
+        <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/RAL_Edge_cases/Amazon2_AA.mp4" type="video/mp4">
+            <source src="videos/demo/edge_cases/double_dsub.mov" type="video/mp4">
           </video>
-          <p class="caption">Silver AA Battery</p>
+          <p class="caption">Double D-Sub Removal</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/RAL_Edge_cases/black_AA.mp4" type="video/mp4">
+            <source src="videos/demo/edge_cases/double_usb.mov" type="video/mp4">
           </video>
-          <p class="caption">Black AA Battery</p>
-        </div> -->
+          <p class="caption">Double USB Removal</p>
+        </div>
     
         <!-- Second Row: 2 Videos -->
-        <!-- <div class="video-case">
+        <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/RAL_Edge_cases/duracel.mp4" type="video/mp4">
+            <source src="videos/demo/edge_cases/double_terminal.mov" type="video/mp4">
           </video>
-          <p class="caption">Copper and Black AA Battery</p>
+          <p class="caption">Double Terminal Block Removal</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
-            <source src="videos/RAL_Edge_cases/orang_AAA.mp4" type="video/mp4">
+            <source src="videos/demo/edge_cases/double_bnc.mov" type="video/mp4">
           </video>
-          <p class="caption">Orange AAA Battery</p>
-        </div> -->
+          <p class="caption">Double BNC Removal</p>
+        </div>
     
         <!-- Third Row: 2 Videos -->
         <!-- <div class="video-case">
           <video controls playsinline autoplay muted loop>
             <source src="videos/RAL_Edge_cases/silver_c.mp4" type="video/mp4">
           </video>
-          <p class="caption">Metallic C Battery</p>
+          <p class="caption">Filler</p>
         </div>
         <div class="video-case">
           <video controls playsinline autoplay muted loop>
             <source src="videos/Silver_D.mp4" type="video/mp4">
           </video>
-          <p class="caption">Silver D Battery</p>
+          <p class="caption">Filler</p>
         </div> -->
     
         <!-- Fourth Row: Centered Video -->
@@ -228,10 +257,10 @@
           <video controls playsinline autoplay muted loop>
             <source src="videos/RAL_Edge_cases/C_series.mp4" type="video/mp4">
           </video>
-          <p class="caption">C Batteries in Series</p>
-        </div>
+          <p class="caption">Filler</p>
+        </div> -->
       </div>
-    </div> -->
+    </div>
     
     
     <div class="divider"></div>
