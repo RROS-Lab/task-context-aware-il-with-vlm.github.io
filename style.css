@@ -69,6 +69,16 @@
     margin-bottom:30px;
 }
 
+.sectitle2{
+    font-family:  "Source Sans Pro","Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:24px;
+    font-weight:800;
+    line-height:28px;
+    text-align: center;
+    margin-top:10px;
+    margin-bottom:30px;
+}
+
 .author{
     font-family: FontAwesome, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:22px;
@@ -446,5 +456,108 @@ pre {
   word-break: break-word;
 }
 
+/* Image Button Functionality */
+/* Center the section title */
+#hw_setup .sectitle2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
 
+/* Make the grid a flex container and center columns */
+#hw_setup_grid {
+  display: flex;
+  justify-content: center; /* center columns horizontally */
+  gap: 640px;               /* space between columns */
+  flex-wrap: wrap;         /* wrap on smaller screens */
+}
 
+/* Each column */
+#hw_setup_grid .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* center buttons inside column */
+  gap: 18px;
+}
+
+/* Basic table styling */
+.hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.hw-table th,
+.hw-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Center the button in the table cell */
+.button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Button styling */
+.preview-btn {
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 2px solid #e2e2e2;
+  background: #f0f0f0;
+  transition: background 0.2s;
+}
+
+.preview-btn:hover {
+  background: #e2e2e2;
+}
+
+/* Hover preview image */
+.hover-preview {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 70vw;
+  max-height: 70vh;
+  border: 3px solid #333;
+  background: white;
+  padding: 4px;
+  z-index: 9999;
+}
+
+/* Hover caption */
+.hover-caption {
+  display: none;
+  position: fixed;
+  top: calc(50% + 20px); /* just below the image */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  max-width: 60vw;
+  text-align: center;
+  z-index: 10000;
+}
+
+/* Show image + caption on hover */
+.button-wrapper:hover .hover-preview,
+.button-wrapper:hover .hover-caption {
+  display: block;
+}
+
+/* Optional: style links inside caption */
+.hover-caption a {
+  color: #ffd700;
+  text-decoration: underline;
+}
+.hover-caption a:hover {
+  color: #fff;
+}
