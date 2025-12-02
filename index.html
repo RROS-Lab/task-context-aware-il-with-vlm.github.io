@@ -114,6 +114,36 @@
       </table>      
     </div>
 
+    <div class="container" id="abstract">
+      <center><h2 class="sectitle">Abstract</h2></center>
+      <p class="text">
+        Recent advances in imitation learning have enabled
+        robots to execute an increasingly diverse set of manipulation
+        skills. However, real-world manufacturing assembly and disassembly
+        require long-horizon, multi-task operation, where robots
+        must identify and switch between context-appropriate skills. A
+        single scene may contain multiple task objectives—such as BNC,
+        terminal block, USB, and other connectors—requiring the robot
+        to reason over several possible goals within the same observation
+        space. Moreover, each connector type demands distinct motion
+        strategies (e.g., wiggling, prying, rotating to unlock), making it
+        difficult for policies trained solely on visual and force observations
+        to reliably generalize. Humans naturally overcome this complexity
+        by segmenting long-horizon demonstrations into meaningful
+        sub-task modes and using high-level reasoning, often expressed in
+        language, to guide sequencing and execution. Motivated by this
+        insight, we tackle two key challenges: (1) improving policy efficiency
+        and robustness by structuring manipulation into language-guided
+        sub-task modes, and (2) enabling a high-level Vision-Language
+        Model (VLM) to select the appropriate sub-task based
+        on natural-language prompts and scene context. Furthermore,
+        we introduce an adaptive modality-weighting framework that
+        dynamically adjusts the contribution of visual and force cues
+        depending on the current sub-task mode.
+      </p>
+    </div>
+    <div class="divider"></div>
+
     <div class="container demo-videos">
       <center><h2 class="sectitle">Our Method</h2></center>
       <div class="video-row">
@@ -257,96 +287,6 @@
           </video>
           <p class="caption">Filler</p>
         </div> -->
-      </div>
-    </div>
-    
-    
-    <div class="divider"></div>
-    <div class="container" id="abstract">
-      <center><h2 class="sectitle">Abstract</h2></center>
-      <p class="text">
-        Recent advances in imitation learning have enabled
-        robots to execute an increasingly diverse set of manipulation
-        skills. However, real-world manufacturing assembly and disassembly
-        require long-horizon, multi-task operation, where robots
-        must identify and switch between context-appropriate skills. A
-        single scene may contain multiple task objectives—such as BNC,
-        terminal block, USB, and other connectors—requiring the robot
-        to reason over several possible goals within the same observation
-        space. Moreover, each connector type demands distinct motion
-        strategies (e.g., wiggling, prying, rotating to unlock), making it
-        difficult for policies trained solely on visual and force observations
-        to reliably generalize. Humans naturally overcome this complexity
-        by segmenting long-horizon demonstrations into meaningful
-        sub-task modes and using high-level reasoning, often expressed in
-        language, to guide sequencing and execution. Motivated by this
-        insight, we tackle two key challenges: (1) improving policy efficiency
-        and robustness by structuring manipulation into language-guided
-        sub-task modes, and (2) enabling a high-level Vision-Language
-        Model (VLM) to select the appropriate sub-task based
-        on natural-language prompts and scene context. Furthermore,
-        we introduce an adaptive modality-weighting framework that
-        dynamically adjusts the contribution of visual and force cues
-        depending on the current sub-task mode.
-      </p>
-    </div>
-    <div class="divider"></div>
-
-    <div class="container" id="network">
-      <center><h2 class="sectitle">Temporal Freezing Effect</h2></center>
-      <div class="container">
-        <img src="images/temporal_bottleneck.png"></img>
-      </div>
-    </div>
-    <div class="divider"></div>
-      <div class="container" id="network">
-        <center><h2 class="sectitle">System Architecture</h2></center>
-        <!-- <div class="container">
-          <img src="images/tca_system_architecture.png"></img>
-        </div>
-        <div class="container">
-          <div class="reduced-image">
-            <img src="images/online_vlm_arch.png"></img>
-          </div>
-        </div> -->
-        
-        <div class="bottom-images">
-          <div class="large-part-image">
-            <img src="images/tca_system_architecture.png"></img>
-            <center><p class="caption">System Architecture</p></center>
-          </div>
-          <div class="vert-divider"></div>
-          <div class="small-part-image">
-            <img src="images/online_vlm_arch_2.png"></img>
-            <center><p class="caption">Switching between Lightweight and Reasoning VLM Prompting</p></center>
-          </div>
-        </div>
-
-      </div>
-
-    <div class="divider"></div>
-
-    <center><h2 class="sectitle">Experimental Setup</h2></center>
-    <!-- <div class="img-row" id="connector-images">
-      <div class="container image-container">
-        <img src="images/hardware_setup.png" alt="?" class="centered-image">
-        <p class="caption">Hardware Setup</p>
-      </div>
-      <div class="container image-container">
-        <img src="images/trajectory_command.png" alt="?" class="centered-image">
-        <p class="caption">Connector Task Map</p>
-      </div>
-    </div>
-    <div class="divider"></div> -->
-
-    <div class="bottom-images">
-      <div class="med-part-image">
-        <img src="images/hardware_setup.png"></img>
-        <center><p class="caption">Hardware Setup</p></center>
-      </div>
-      <div class="large-part-image">
-        <img src="images/trajectory_command.png"></img>
-        <center><p class="caption">Connector Tasks</p></center>
       </div>
     </div>
     <div class="divider"></div>
@@ -797,6 +737,65 @@
           </div>
         </div>
       </div> -->
+    </div>
+    <div class="divider"></div>
+
+    <div class="container" id="network">
+      <center><h2 class="sectitle">Temporal Freezing Effect</h2></center>
+      <div class="container">
+        <img src="images/temporal_bottleneck.png"></img>
+      </div>
+    </div>
+    <div class="divider"></div>
+      <div class="container" id="network">
+        <center><h2 class="sectitle">System Architecture</h2></center>
+        <!-- <div class="container">
+          <img src="images/tca_system_architecture.png"></img>
+        </div>
+        <div class="container">
+          <div class="reduced-image">
+            <img src="images/online_vlm_arch.png"></img>
+          </div>
+        </div> -->
+        
+        <div class="bottom-images">
+          <div class="large-part-image">
+            <img src="images/tca_system_architecture.png"></img>
+            <center><p class="caption">System Architecture</p></center>
+          </div>
+          <div class="vert-divider"></div>
+          <div class="small-part-image">
+            <img src="images/online_vlm_arch_2.png"></img>
+            <center><p class="caption">Switching between Lightweight and Reasoning VLM Prompting</p></center>
+          </div>
+        </div>
+
+      </div>
+
+    <div class="divider"></div>
+
+    <center><h2 class="sectitle">Experimental Setup</h2></center>
+    <!-- <div class="img-row" id="connector-images">
+      <div class="container image-container">
+        <img src="images/hardware_setup.png" alt="?" class="centered-image">
+        <p class="caption">Hardware Setup</p>
+      </div>
+      <div class="container image-container">
+        <img src="images/trajectory_command.png" alt="?" class="centered-image">
+        <p class="caption">Connector Task Map</p>
+      </div>
+    </div>
+    <div class="divider"></div> -->
+
+    <div class="bottom-images">
+      <div class="med-part-image">
+        <img src="images/hardware_setup.png"></img>
+        <center><p class="caption">Hardware Setup</p></center>
+      </div>
+      <div class="large-part-image">
+        <img src="images/trajectory_command.png"></img>
+        <center><p class="caption">Connector Tasks</p></center>
+      </div>
     </div>
     <div class="divider"></div>
 
