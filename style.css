@@ -485,14 +485,23 @@ pre {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  font-size: 14px;
 }
 
 .hw-table th,
 .hw-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
-  vertical-align: middle;
+  border: 1px solid #ddd;
+  padding: 2.5px;
+  text-align: center;
+}
+
+.hw-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.hw-table .highlight {
+    font-weight: bold;
 }
 
 /* Center the button in the table cell */
@@ -503,13 +512,14 @@ pre {
 
 /* Button styling */
 .preview-btn {
-  padding: 5px 10px;
+  padding: 1px 10px;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 6px;
   border: 2px solid #e2e2e2;
   background: #f0f0f0;
   transition: background 0.2s;
+  font-size: 14px;
 }
 
 .preview-btn:hover {
