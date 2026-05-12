@@ -49,8 +49,8 @@
     </div> -->
 
     <center>
-      <h1 class="title">Task-Context-Aware Imitation Learning with 
-        Vision-language Guided Inference for Robotic Multi-Task Disassembly</h1>
+      <h1 class="title">Vision–Language Grounded Task-Context-Aware
+Imitation Learning for Robotic Disassembly</h1>
     </center>
 
     <br>
@@ -117,29 +117,7 @@
     <div class="container" id="abstract">
       <center><h2 class="sectitle">Abstract</h2></center>
       <p class="text">
-        Recent advances in imitation learning have enabled
-        robots to execute an increasingly diverse set of manipulation
-        skills. However, real-world manufacturing assembly and disassembly
-        require long-horizon, multi-task operation, where robots
-        must identify and switch between context-appropriate skills. A
-        single scene may contain multiple task objectives—such as BNC,
-        terminal block, USB, and other connectors—requiring the robot
-        to reason over several possible goals within the same observation
-        space. Moreover, each connector type demands distinct motion
-        strategies (e.g., wiggling, prying, rotating to unlock), making it
-        difficult for policies trained solely on visual and force observations
-        to reliably generalize. Humans naturally overcome this complexity
-        by segmenting long-horizon demonstrations into meaningful
-        sub-task modes and using high-level reasoning, often expressed in
-        language, to guide sequencing and execution. Motivated by this
-        insight, we tackle two key challenges: (1) improving policy efficiency
-        and robustness by structuring manipulation into language-guided
-        sub-task modes, and (2) enabling a high-level Vision-Language
-        Model (VLM) to select the appropriate sub-task based
-        on natural-language prompts and scene context. Furthermore,
-        we introduce an adaptive modality-weighting framework that
-        dynamically adjusts the contribution of visual and force cues
-        depending on the current sub-task mode.
+        Real-world robotic disassembly requires long-horizon execution, in which robots must perform ordered sequences of manipulation skills across multiple parts within a single scene. These settings often involve multiple valid task goals that demand distinct physical behaviors, making it difficult for standard imitation policies to infer the intended skill from raw observations alone. This ambiguity is further compounded by pauses that commonly occur during transitions between subtasks in long-horizon demonstrations, causing behavior cloning policies to reproduce inactive states rather than progress toward task completion. We show that incorporating task context through language alleviates these challenges by providing explicit structure for skill sequencing and an ability to associate the language-specified task with the relevant target object in the visual scene. Although our method does not require object-level image annotations, our multi-modal cross-attention architecture, trained with a counterfactual (CF) loss, enables the policy to ground language commands in the appropriate visual target among multiple candidate objects. This grounding produces attention maps that consistently focus on task-relevant object features, allowing the policy to better resolve target-selection ambiguity in multi-task scenes.
       </p>
     </div>
     <div class="divider"></div>
@@ -695,6 +673,10 @@
           <p class="caption">Full Task Board (assembled)</p>
         </div>
       </div>
+      <div class="image-case">
+        <img src="images/BOM/parts.png" class="bom-image">
+        <p class="caption">All Tested Connectors</p>
+      </div>
 
       <!-- <div id="hw_setup_grid">
         <div class="column">
@@ -759,14 +741,15 @@
         
         <div class="bottom-images">
           <div class="large-part-image">
-            <img src="images/tca_system_architecture.png"></img>
+            <!-- <img src="images/tca_system_architecture.png"></img> -->
+            <img src="images/new_arch_diagram.png"></img>
             <center><p class="caption">System Architecture</p></center>
           </div>
-          <div class="vert-divider"></div>
+          <!-- <div class="vert-divider"></div>
           <div class="small-part-image">
             <img src="images/online_vlm_arch_2.png"></img>
             <center><p class="caption">Switching between Lightweight and Reasoning VLM Prompting</p></center>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -862,7 +845,8 @@
                   <td>DP-S</td>
                   <td>0.65</td>
                   <td>0.60</td>
-                  <td>0.46</td>
+                  <!-- <td>0.46</td> -->
+                  <td>0.45</td>
                   <td>0.65</td>
                   <td>0.59</td>
                   <!-- <td>0.3</td>
@@ -878,13 +862,33 @@
                   <td>0.6</td>
                   <td>0.39</td> -->
               </tr>
-              <tr>
+              <!-- <tr>
                   <td>DP-M</td>
                   <td>0.85</td>
                   <td>0.82</td>
                   <td>0.71</td>
                   <td>0.80</td>
                   <td>0.80</td>
+                  <td>0.4</td>
+                  <td>0.3</td>
+                  <td>0.4</td>
+                  <td>0.1</td>
+                  <td>0.4</td>
+                  <td>0.8</td>
+                  <td>0.43</td>
+                  <td>0.6</td>
+                  <td>0.5</td>
+                  <td>0.9</td>
+                  <td>0.67</td>
+                  <td>0.48</td>
+              </tr> -->
+              <tr>
+                  <td>DP-M-C-CNN</td>
+                  <td>0.</td>
+                  <td>0.</td>
+                  <td>0.</td>
+                  <td>0.</td>
+                  <td>0.</td>
                   <!-- <td>0.4</td>
                   <td>0.3</td>
                   <td>0.4</td>
@@ -898,13 +902,73 @@
                   <td>0.67</td>
                   <td>0.48</td> -->
               </tr>
-              <tr class="highlight">
+              <tr>
+                  <td>DP-M-T-CF-RB</td>
+                  <td>0.</td>
+                  <td>0.</td>
+                  <td>0.</td>
+                  <td>0.</td>
+                  <td>0.</td>
+                  <!-- <td>0.4</td>
+                  <td>0.3</td>
+                  <td>0.4</td>
+                  <td>0.1</td>
+                  <td>0.4</td>
+                  <td>0.8</td>
+                  <td>0.43</td>
+                  <td>0.6</td>
+                  <td>0.5</td>
+                  <td>0.9</td>
+                  <td>0.67</td>
+                  <td>0.48</td> -->
+              </tr>
+              <!-- <tr class="highlight">
                   <td>DP-M-AM (Ours)</td>
                   <td>0.95</td>
                   <td>0.95</td>
                   <td>0.80</td>
                   <td>0.90</td>
                   <td>0.90</td>
+                  <td>0.9</td> -->
+                  <!-- <td>1.0</td>
+                  <td>0.97</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>0.96</td>
+              </tr> -->
+              <tr>
+                  <td><b>DP-M-T-CF-CNN</b></td>
+                  <td>0.95</td>
+                  <td>1.00</td>
+                  <td>0.75</td>
+                  <td>1.00</td>
+                  <td>0.93</td>
+                  <!-- <td>0.9</td> -->
+                  <!-- <td>1.0</td>
+                  <td>0.97</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>0.96</td> -->
+              </tr>
+              <tr class="highlight">
+                  <td>DP-M-T-CF-VLM</td>
+                  <td>0.95</td>
+                  <td>1.00</td>
+                  <td>0.80</td>
+                  <td>1.00</td>
+                  <td>0.94</td>
                   <!-- <td>0.9</td> -->
                   <!-- <td>1.0</td>
                   <td>0.97</td>
@@ -931,7 +995,8 @@
 
       <div class="image-single">
         <div class="image-case">
-          <img src="images/mode_switch.png" alt="Mode Switch" class="small-image">
+          <!-- <img src="images/mode_switch.png" alt="Mode Switch" class="small-image"> -->
+          <img src="images/mode_switch_new.png" alt="Mode Switch" class="small-image">
           <p class="caption">Action steps taken for mode switching. </p>
         </div>
       </div>
@@ -1008,9 +1073,47 @@
           </tr>
         </table>
         <center><p class="caption">Average response latency of Vision-Language models.</p></center>
+        
+        <table class="results-table">
+          <tr>
+            <!-- <th rowspan="2"></th> -->
+            <th colspan="1">Model</th>
+            <!-- <th rowspan="2"></th> -->
+            <th colspan="1">Success Rate (%)</th>
+          </tr>
+          <tr>
+            <td>DiT (no Cross-Attention, no CF Loss)</td>
+            <td>43.3</td>
+          </tr>
+          <tr>
+            <td>DiT + CF Loss</td>
+            <td>76.6</td>
+          </tr>
+          <tr>
+            <td><b>iT + CF Loss + Cross-Attention (Ours)</b></td>
+            <td><b>100</b></td>
+          </tr>
+        </table>
+        <center><p class="caption">Ablation: Success rate in object selection upon language command.</p></center>
+    
     </div>
     
     <div class="divider"></div>
+    
+    <div class="container" id="result">
+      <center><h2 class="sectitle">Language-Grounded Attention</h2></center>
+      <div class="image-case">
+        <img src="images/attention_vis.png" alt="Labeling Proposal Accuracy">
+        <p class="caption">Visualization of the attention map during approach by language command.</p>
+      </div>
+      <div class="image-case">
+        <img src="images/attn_plot_horizon.png" alt="Labeling Proposal Accuracy">
+        <p class="caption">Attention weights assigned to different modalities during action prediction in the DiT policy.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
 <div class="container" id="bibtex">
   <center><h2 class="sectitle">BibTeX</h2></center>
   <pre style="background-color: #f4f4f4; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 14px;">
