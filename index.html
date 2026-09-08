@@ -44,19 +44,20 @@
   </head>
   
   <body>
-    <!-- <div class="header">
+    <div class="header">
       <img src="images/usc-logo.png" alt="USC Logo" class="usc-logo">
-    </div> -->
+    </div>
 
     <center>
-      <h1 class="title">Vision–Language Grounded Task-Context-Aware
-Imitation Learning for Robotic Disassembly</h1>
+      <!-- <h1 class="title">Vision–Language Grounded Task-Context-Aware
+Imitation Learning for Robotic Disassembly</h1> -->
+        <h1 class="title">Vision-Language Grounded Task-Context-Aware Imitation Learning for Robotic Disassembly</h1>
     </center>
 
     <br>
-    <table align=center width=1000px>
+    <table align=center width=1250px>
       <tr>
-        <!-- <td align=center width=150px>
+        <td align=center width=150px>
           <center>
             <span class="author">Jeon Ho Kang</a></span>
           </center>
@@ -68,18 +69,23 @@ Imitation Learning for Robotic Disassembly</h1>
         </td>
         <td align=center width=150px>
           <center>
+            <span class="author">Ethan Niu</a></span>
+          </center>
+        </td>
+        <td align=center width=150px>
+          <center>
             <span class="author">Ian Novales</a></span>
           </center>
         </td>
-        <td align=center width=190px>
+        <td align=center width=150px>
           <center>
             <span class="author">Satyandra K. Gupta</a></span>
           </center>
-        </td> -->
+        </td>
       </tr>
     </table>
 
-    <!-- <table align=center width=700px>
+    <table align=center width=700px>
       <tr>
         <td align=center width=100px>
           <center>
@@ -87,7 +93,7 @@ Imitation Learning for Robotic Disassembly</h1>
           </center>
         </td>
       </tr>
-    </table> -->
+    </table>
 
     <div class="container">
       <table align=center width=60%>
@@ -117,7 +123,7 @@ Imitation Learning for Robotic Disassembly</h1>
     <div class="container" id="abstract">
       <center><h2 class="sectitle">Abstract</h2></center>
       <p class="text">
-        Real-world robotic disassembly requires long-horizon execution, in which robots must perform ordered sequences of manipulation skills across multiple parts within a single scene. These settings often involve multiple valid task goals that demand distinct physical behaviors, making it difficult for standard imitation policies to infer the intended skill from raw observations alone. This ambiguity is further compounded by pauses that commonly occur during transitions between subtasks in long-horizon demonstrations, causing behavior cloning policies to reproduce inactive states rather than progress toward task completion. We show that incorporating task context through language alleviates these challenges by providing explicit structure for skill sequencing and an ability to associate the language-specified task with the relevant target object in the visual scene. Although our method does not require object-level image annotations, our multi-modal cross-attention architecture, trained with a counterfactual (CF) loss, enables the policy to ground language commands in the appropriate visual target among multiple candidate objects. This grounding produces attention maps that consistently focus on task-relevant object features, allowing the policy to better resolve target-selection ambiguity in multi-task scenes.
+        Real-world robotic disassembly requires long-horizon execution, where robots must perform ordered sequences of manipulation tasks across multiple parts within a single scene. Multiple valid task goals and diverse assembly configurations make it difficult for imitation policies to infer the intended skill from raw observations alone, particularly when training data cannot cover the combinatorial diversity of real-world configurations and part geometries. We show that incorporating task context through language alleviates these challenges by providing explicit structure for skill selection and associating language-specified tasks with their corresponding manipulation targets in the visual scene. The proposed framework combines hierarchical task selection with task-context-aware imitation learning to ground language instructions in spatial visual representations for robotic disassembly. The resulting framework generalizes across diverse connector geometries and assembly configurations without requiring explicit object annotations. Our method improves end-to-end task success by 35% over the baseline diffusion policy and by 75% over the previous task-context-aware baseline.
       </p>
     </div>
     <div class="divider"></div>
@@ -264,6 +270,94 @@ Imitation Learning for Robotic Disassembly</h1>
           </video>
           <p class="caption">Filler</p>
         </div> -->
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="container" id="ood-cases">
+      <center><h2 class="sectitle">Generalization to Held-Out Mechanisms and Assembly Configs</h2></center>
+      <div class="failure-grid">
+        <!-- First Row: 2 Videos -->
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_hom/power_cable_video_new.mov" type="video/mp4">
+          </video>
+          <p class="caption">NEMA 5-15P 120V Power Cable</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_hom/velcro_video.mov" type="video/mp4">
+          </video>
+          <p class="caption">Velcro</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_hom/magnetic_video.mov" type="video/mp4">
+          </video>
+          <p class="caption">Industrial-Grade Magnet</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_hom/usb_hub_video.mov" type="video/mp4">
+          </video>
+          <p class="caption">USB Hub</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="container" id="ood-cases">
+      <center><h2 class="sectitle">Generalization to Out-Of-Distribution Objects</h2></center>
+      <div class="failure-grid">
+        <!-- First Row: 2 Videos -->
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_ood/BNC_TypeA.mov" type="video/mp4">
+          </video>
+          <p class="caption">BNC Type A</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_ood/bnc_TypeB.mov" type="video/mp4">
+          </video>
+          <p class="caption">BNC Type B</p>
+        </div>
+    
+        <!-- Second Row: 2 Videos -->
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_ood/dsub_typeB.mov" type="video/mp4">
+          </video>
+          <p class="caption">D-Sub Type B</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_ood/USB_Blue.mov" type="video/mp4">
+          </video>
+          <p class="caption">Blue USB</p>
+        </div>
+    
+        <!-- Third Row: 2 Videos -->
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_ood/USB_Orange.mov" type="video/mp4">
+          </video>
+          <p class="caption">Orange USB</p>
+        </div>
+        <div class="video-case">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_ood/USB_Silver.mov" type="video/mp4">
+          </video>
+          <p class="caption">Silver USB</p>
+        </div>
+    
+        <!-- Fourth Row: Centered Video -->
+        <div class="video-case video-center">
+          <video controls playsinline autoplay muted loop>
+            <source src="videos/generalize_ood/USB_TypeA.mov" type="video/mp4">
+          </video>
+          <p class="caption">USB Type A</p>
+        </div>
       </div>
     </div>
     <div class="divider"></div>
@@ -674,8 +768,8 @@ Imitation Learning for Robotic Disassembly</h1>
         </div>
       </div>
       <div class="image-case">
-        <img src="images/BOM/parts.png" class="bom-image">
-        <p class="caption">All Tested Connectors</p>
+        <img src="images/BOM/parts_new2.png" class="bom-image">
+        <p class="caption">Diverse types of connectors and assembly configurations used to test the generalizability of our approach.</p>
       </div>
 
       <!-- <div id="hw_setup_grid">
@@ -783,6 +877,88 @@ Imitation Learning for Robotic Disassembly</h1>
 
     <div class="container" id="result">
       <center><h2 class="sectitle">Results</h2></center>
+
+      <div class="bottom-images">
+        <div class="image-case">
+          <img src="images/accuracy_online_proposals.png" alt="Online Proposal Accuracy">
+          <p class="caption">Accuracy of online proposals for the next sub-task.</p>
+        </div>
+        <div class="image-case">
+          <img src="images/accuracy_labeling_proposals.png" alt="Labeling Proposal Accuracy">
+          <p class="caption">Sub-task accuracy on trajectory data evaluated across five VLMs.</p>
+        </div>
+      </div>
+      <!-- <div class="image-single">
+        <div class="image-case">
+          <img src="images/failure_force.png" alt="Failure Mode" class="large-image">
+          <p class="caption">Example Force Trend During Failure [Vision-only]</p>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="table-container">
+        <style>
+            .results-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                font-size: 14px;
+            }
+
+            .results-table th, .results-table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+
+            .results-table th {
+                background-color: #f5f5f5;
+                font-weight: bold;
+            }
+
+            .results-table .highlight {
+                font-weight: bold;
+            }
+        </style>
+
+        <!-- <table class="results-table">
+          <tr> -->
+            <!-- <th rowspan="2"></th> -->
+            <!-- <th colspan="1">Model</th> -->
+            <!-- <th rowspan="2"></th> -->
+            <!-- <th colspan="1">Latency (s)</th>
+          </tr>
+          <tr>
+            <td>GPT-5</td>
+            <td>18.9 &plusmn; 6.6</td>
+          </tr>
+          <tr>
+            <td>GPT-5-nano</td>
+            <td>11.7 &plusmn; 5.9</td>
+          </tr>
+          <tr>
+            <td>Gemini-2.5-pro</td>
+            <td>12.2 &plusmn; 2.0</td>
+          </tr>
+          <tr>
+            <td>Gemini-robotics-1.5</td>
+            <td>12.0 &plusmn; 3.8</td>
+          </tr>
+          <tr>
+            <td>Qwen3-VL</td>
+            <td>38.8 &plusmn; 21.7</td>
+          </tr>
+        </table>
+        <center><p class="caption">Average response latency of Vision-Language models.</p></center> --> -->
+
+      <div class="image-single">
+        <div class="image-case">
+          <!-- <img src="images/mode_switch.png" alt="Mode Switch" class="small-image"> -->
+          <img src="images/mode_switch_new.png" alt="Mode Switch" class="small-image">
+          <p class="caption">Action steps taken for mode switching. </p>
+        </div>
+      </div>
+
       <div class="table-container">
           <style>
               .results-table {
@@ -884,11 +1060,11 @@ Imitation Learning for Robotic Disassembly</h1>
               </tr> -->
               <tr>
                   <td>DP-M-C-CNN</td>
-                  <td>0.</td>
-                  <td>0.</td>
-                  <td>0.</td>
-                  <td>0.</td>
-                  <td>0.</td>
+                  <td>0.10</td>
+                  <td>0.20</td>
+                  <td>0.00</td>
+                  <td>0.45</td>
+                  <td>0.19</td>
                   <!-- <td>0.4</td>
                   <td>0.3</td>
                   <td>0.4</td>
@@ -904,11 +1080,11 @@ Imitation Learning for Robotic Disassembly</h1>
               </tr>
               <tr>
                   <td>DP-M-T-CF-RB</td>
-                  <td>0.</td>
-                  <td>0.</td>
-                  <td>0.</td>
-                  <td>0.</td>
-                  <td>0.</td>
+                  <td>0.45</td>
+                  <td>0.65</td>
+                  <td>0.55</td>
+                  <td>0.95</td>
+                  <td>0.65</td>
                   <!-- <td>0.4</td>
                   <td>0.3</td>
                   <td>0.4</td>
@@ -942,7 +1118,7 @@ Imitation Learning for Robotic Disassembly</h1>
                   <td>1.0</td>
                   <td>0.96</td>
               </tr> -->
-              <tr>
+              <tr class="highlight">
                   <td><b>DP-M-T-CF-CNN</b></td>
                   <td>0.95</td>
                   <td>1.00</td>
@@ -962,8 +1138,28 @@ Imitation Learning for Robotic Disassembly</h1>
                   <td>1.0</td>
                   <td>0.96</td> -->
               </tr>
+              <tr>
+                  <td>DP-M-T-CF-VLM-V1</td>
+                  <td>0.85</td>
+                  <td>0.90</td>
+                  <td>0.60</td>
+                  <td>0.90</td>
+                  <td>0.83</td>
+                  <!-- <td>0.9</td> -->
+                  <!-- <td>1.0</td>
+                  <td>0.97</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>1.0</td>
+                  <td>0.96</td> -->
+              </tr>
               <tr class="highlight">
-                  <td>DP-M-T-CF-VLM</td>
+                  <td>DP-M-T-CF-VLM-V2</td>
                   <td>0.95</td>
                   <td>1.00</td>
                   <td>0.80</td>
@@ -984,7 +1180,35 @@ Imitation Learning for Robotic Disassembly</h1>
               </tr>
           </table>
       </div>
-      
+      <center><p class="caption">Task success rate comparison.</p></center>
+
+      <table class="results-table">
+          <tr>
+            <!-- <th rowspan="2"></th> -->
+            <th colspan="1">Method</th>
+            <!-- <th rowspan="2"></th> -->
+            <th colspan="1">USB Hub</th>
+            <th colspan="1">Power Cable</th>
+            <th colspan="1">Magnetic</th>
+            <th colspan="1">Velcro</th>
+          </tr>
+          <tr>
+            <td>CNN</td>
+            <td>0.40</td>
+            <td>0.50</td>
+            <td>0.30</td>
+            <td>0.00</td>
+          </tr>
+          <tr class="highlight">
+            <td>VLM-V2</td>
+            <td>0.90</td>
+            <td>0.90</td>
+            <td>0.70</td>
+            <td>0.60</td>
+          </tr>
+        </table>
+        <center><p class="caption">Task success rates on held-out connector mechanisms and configurations.</p></center>
+
       <!-- <div class="image-single">
         <div class="image-case">
           <img src="images/bar_chart_time.png" alt="Time Taken Comparison">
@@ -992,109 +1216,28 @@ Imitation Learning for Robotic Disassembly</h1>
             demonstration versus robot inference.</p>
         </div>
       </div> -->
-
-      <div class="image-single">
-        <div class="image-case">
-          <!-- <img src="images/mode_switch.png" alt="Mode Switch" class="small-image"> -->
-          <img src="images/mode_switch_new.png" alt="Mode Switch" class="small-image">
-          <p class="caption">Action steps taken for mode switching. </p>
-        </div>
-      </div>
-
-      <div class="bottom-images">
-        <div class="image-case">
-          <img src="images/accuracy_online_proposals.png" alt="Online Proposal Accuracy">
-          <p class="caption">Accuracy of online proposals for the next sub-task.</p>
-        </div>
-        <div class="image-case">
-          <img src="images/accuracy_labeling_proposals.png" alt="Labeling Proposal Accuracy">
-          <p class="caption">Sub-task accuracy on trajectory data evaluated across five VLMs.</p>
-        </div>
-      </div>
-      <!-- <div class="image-single">
-        <div class="image-case">
-          <img src="images/failure_force.png" alt="Failure Mode" class="large-image">
-          <p class="caption">Example Force Trend During Failure [Vision-only]</p>
-        </div>
-      </div> -->
-    </div>
-
-    <div class="table-container">
-        <style>
-            .results-table {
-                width: 100%;
-                border-collapse: collapse;
-                margin: 20px 0;
-                font-size: 14px;
-            }
-
-            .results-table th, .results-table td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: center;
-            }
-
-            .results-table th {
-                background-color: #f5f5f5;
-                font-weight: bold;
-            }
-
-            .results-table .highlight {
-                font-weight: bold;
-            }
-        </style>
-
-        <table class="results-table">
-          <tr>
-            <!-- <th rowspan="2"></th> -->
-            <th colspan="1">Model</th>
-            <!-- <th rowspan="2"></th> -->
-            <th colspan="1">Latency (s)</th>
-          </tr>
-          <tr>
-            <td>GPT-5</td>
-            <td>18.9 &plusmn; 6.6</td>
-          </tr>
-          <tr>
-            <td>GPT-5-nano</td>
-            <td>11.7 &plusmn; 5.9</td>
-          </tr>
-          <tr>
-            <td>Gemini-2.5-pro</td>
-            <td>12.2 &plusmn; 2.0</td>
-          </tr>
-          <tr>
-            <td>Gemini-robotics-1.5</td>
-            <td>12.0 &plusmn; 3.8</td>
-          </tr>
-          <tr>
-            <td>Qwen3-VL</td>
-            <td>38.8 &plusmn; 21.7</td>
-          </tr>
-        </table>
-        <center><p class="caption">Average response latency of Vision-Language models.</p></center>
         
-        <table class="results-table">
-          <tr>
-            <!-- <th rowspan="2"></th> -->
-            <th colspan="1">Model</th>
-            <!-- <th rowspan="2"></th> -->
-            <th colspan="1">Success Rate (%)</th>
-          </tr>
-          <tr>
-            <td>DiT (no Cross-Attention, no CF Loss)</td>
-            <td>43.3</td>
-          </tr>
-          <tr>
-            <td>DiT + CF Loss</td>
-            <td>76.6</td>
-          </tr>
-          <tr>
-            <td><b>iT + CF Loss + Cross-Attention (Ours)</b></td>
-            <td><b>100</b></td>
-          </tr>
-        </table>
-        <center><p class="caption">Ablation: Success rate in object selection upon language command.</p></center>
+      <table class="results-table">
+        <tr>
+          <!-- <th rowspan="2"></th> -->
+          <th colspan="1">Model</th>
+          <!-- <th rowspan="2"></th> -->
+          <th colspan="1">Success Rate (%)</th>
+        </tr>
+        <tr>
+          <td>DiT (no Cross-Attention, no CF Loss)</td>
+          <td>43.3</td>
+        </tr>
+        <tr>
+          <td>DiT + CF Loss</td>
+          <td>66.6</td>
+        </tr>
+        <tr>
+          <td><b>iT + CF Loss + Cross-Attention (Ours)</b></td>
+          <td><b>100</b></td>
+        </tr>
+      </table>
+      <center><p class="caption">Ablation: Success rate in object selection upon language command.</p></center>
     
     </div>
     
@@ -1103,8 +1246,12 @@ Imitation Learning for Robotic Disassembly</h1>
     <div class="container" id="result">
       <center><h2 class="sectitle">Language-Grounded Attention</h2></center>
       <div class="image-case">
-        <img src="images/attention_vis.png" alt="Labeling Proposal Accuracy">
-        <p class="caption">Visualization of the attention map during approach by language command.</p>
+        <img src="images/_cf_panel.png" alt="Labeling Proposal Accuracy">
+        <p class="caption">CF Hinge Loss behavior during training, compared with MSEs for correct and incorrect action-language pairs.</p>
+      </div>
+      <div class="image-case">
+        <img src="images/full_attn_plot.png" alt="Labeling Proposal Accuracy">
+        <p class="caption">Visualization of the attention map during approach phase under different language commands.</p>
       </div>
       <div class="image-case">
         <img src="images/attn_plot_horizon.png" alt="Labeling Proposal Accuracy">
